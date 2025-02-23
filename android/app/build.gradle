@@ -1,0 +1,129 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+def dartEnvironmentVariables = [
+        APP_APP_NAME_EN: 'OSOS',
+        APP_APP_NAME_AR: 'أسس',
+        APP_ID         : 'system.dev',
+]
+if (project.hasProperty('dart-defines')) {
+
+    dartEnvironmentVariables = dartEnvironmentVariables + project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+                println "ENV VAR: ${pair.first()} = ${pair.last()}"
+                [(pair.first()): pair.last()]
+            }
+
+//    String encoded = "QVBQX0FQUF9OQU1FX0FSPdij2LPYsyDYr9mK2YE="
+//    def pair = new String(encoded.decodeBase64(), 'UTF-8')
+//    println "AA ${pair}"
+
+}
+
+android {
+    namespace = "system.dev"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "system.dev"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def appName = "OSOS_V_"
+                    def newName = "${appName}${defaultConfig.versionName}_${defaultConfig.versionCode}.apk"
+                    outputFileName = newName
+                }
+            }
+        }
+    }
+
+    flavorDimensions "app"
+    productFlavors {
+        dev {
+            dimension "app"
+            applicationId dartEnvironmentVariables.APP_ID
+            copy {
+                from 'src/dev/'
+                include '*.json'
+                into '.'
+            }
+        }
+        prod {
+            dimension "app"
+            applicationId dartEnvironmentVariables.APP_ID
+            copy {
+                from 'src/prod/'
+                include '*.json'
+                into '.'
+            }
+        }
+        stage {
+            dimension "app"
+            applicationId dartEnvironmentVariables.APP_ID
+            copy {
+                from 'src/stage/'
+                include '*.json'
+                into '.'
+            }
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}

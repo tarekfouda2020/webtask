@@ -1,14 +1,16 @@
 part of 'profile_imports.dart';
 
-@RoutePage()
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class ProfileScreen extends StatefulWidget {
+  static final String name = 'profile';
+  static final String path = '/profile';
+  const ProfileScreen({super.key});
 
   @override
-  _ProfileState createState() => _ProfileState();
+  State<StatefulWidget> createState() => _ProfileState();
+
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<ProfileScreen> {
   late ProfileController controller;
 
   @override

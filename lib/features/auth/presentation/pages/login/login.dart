@@ -1,15 +1,16 @@
 part of 'login_imports.dart';
 
-@RoutePage()
-class Login extends StatefulWidget {
-  const Login({super.key});
+class LoginScreen extends StatefulWidget {
+  static var name = 'login';
+  static var path = '/login';
+  const LoginScreen({super.key});
 
   @override
   State<StatefulWidget> createState() => _LoginState();
 
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<LoginScreen> {
   final LoginController controller = LoginController();
 
   @override

@@ -1,9 +1,9 @@
+import 'package:base_structure/core/routes/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:base_structure/core/constants/gaps.dart';
 import 'package:base_structure/core/errors/base_error.dart';
 import 'package:base_structure/core/errors/unknown_error.dart';
 import 'package:base_structure/core/helpers/di.dart';
-import 'package:base_structure/core/helpers/global_context.dart';
 import 'package:base_structure/core/localization/translate.dart';
 import 'package:base_structure/core/theme/colors/app_colors.dart';
 import 'package:base_structure/core/theme/text/app_text_style.dart';
@@ -55,7 +55,7 @@ abstract class AppSnackBar {
       {
       // if true, show snackBar even if another snackBar is active
       bool forceShow = false}) {
-    BuildContext context = getIt.get<GlobalContext>().context();
+    BuildContext context = AppNavigator.context!;
     if (_isSnackBarActive && !forceShow) return;
     _isSnackBarActive = true;
     ScaffoldMessenger.of(context).showSnackBar(snackBar).closed.then((value) {

@@ -1,15 +1,16 @@
 part of'reset_password_imports.dart';
 
-@RoutePage()
-class ResetPassword extends StatefulWidget {
-  const ResetPassword({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  static var name = 'reset_password';
+  static var path = '/reset_password';
+  const ResetPasswordScreen({super.key});
 
   @override
   State<StatefulWidget> createState() => _ResetPasswordState();
 
 }
 
-class _ResetPasswordState extends State<ResetPassword> {
+class _ResetPasswordState extends State<ResetPasswordScreen> {
   final ResetPasswordController controller=ResetPasswordController();
   @override
   Widget build(BuildContext context) {

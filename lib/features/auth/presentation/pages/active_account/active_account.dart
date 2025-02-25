@@ -1,15 +1,16 @@
 part of 'active_account_imports.dart';
 
-@RoutePage()
-class ActiveAccount extends StatefulWidget {
-  const ActiveAccount({super.key});
+class ActiveAccountScreen extends StatefulWidget {
+  static var name = 'active_account';
+  static var path = '/active_account';
+  const ActiveAccountScreen({super.key});
 
   @override
   State<StatefulWidget> createState() => _ActiveAccountState();
 
 }
 
-class _ActiveAccountState extends State<ActiveAccount> {
+class _ActiveAccountState extends State<ActiveAccountScreen> {
   final ActiveAccountController controller = ActiveAccountController();
 
   @override

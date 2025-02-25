@@ -1,17 +1,16 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:base_structure/core/bloc/device_cubit/device_cubit.dart';
 import 'package:base_structure/core/helpers/di.dart';
-import 'package:base_structure/core/routes/router_imports.dart';
 import 'package:base_structure/core/theme/themes/app_dark_theme.dart';
 import 'package:base_structure/core/theme/themes/app_light_theme.dart';
 import 'package:base_structure/core/widgets/network_layer/network_layer_widget.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'core/helpers/firebase_analytics_helper.dart';
 import 'core/helpers/general_providers.dart';
@@ -63,13 +62,7 @@ class _MyAppState extends State<MyApp> {
                     GlobalWidgetsLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
                   ],
-                  routerDelegate: getIt.get<AppRouter>().delegate(navigatorObservers: () {
-                    return [
-                      FirebaseAnalyticsObserver(
-                          analytics: getIt<FirebaseAnalyticsHelper>().analytics)
-                    ];
-                  }),
-                  routeInformationParser: getIt.get<AppRouter>().defaultRouteParser(),
+                  routerConfig: getIt.get<GoRouter>(),
                   builder: EasyLoading.init(builder: (ctx, child) {
                     ScreenUtil.init(ctx);
                     return NetworkLayerWidget(

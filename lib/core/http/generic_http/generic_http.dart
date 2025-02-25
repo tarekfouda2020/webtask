@@ -1,9 +1,9 @@
 
+import 'package:base_structure/core/routes/app_navigator.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base_structure/core/bloc/device_cubit/device_cubit.dart';
 import 'package:base_structure/core/helpers/di.dart';
-import 'package:base_structure/core/helpers/global_context.dart';
 import 'package:base_structure/core/http/models/result.dart';
 import 'package:injectable/injectable.dart';
 
@@ -65,9 +65,9 @@ class GenericHttpImpl<T> extends GenericHttp<T> {
   }
 
   Future<void> _checkInternetConnection() async {
-    var context = getIt<GlobalContext>().context();
+    var context = AppNavigator.context;
     await getIt<NetworkInfoImpl>().isConnected.then((connected) async {
-      context.read<DeviceCubit>().setNetworkStatus(connected);
+      context?.read<DeviceCubit>().setNetworkStatus(connected);
       if (!connected) {
         await Future.delayed(const Duration(seconds: 5), ()async {
           await _checkInternetConnection();

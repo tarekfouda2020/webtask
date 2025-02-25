@@ -1,7 +1,7 @@
 part of 'login_widgets_imports.dart';
 
 class BuildForgetPasswordView extends StatelessWidget {
-  const BuildForgetPasswordView({Key? key}) : super(key: key);
+  const BuildForgetPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BuildForgetPasswordView extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           InkWell(
-            onTap: () => AutoRouter.of(context).push(const ForgetPassword()),
+            onTap: () => AppNavigator.instance.push(context, path: ForgetPasswordScreen.path),
             child: Text(
               "Tap here",
               style: AppTextStyle.s14_w400(color: context.colors.primary),

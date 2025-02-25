@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_new_item": MessageLookupByLibrary.simpleMessage("إضافة عنصر جديد"),
     "app_cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "app_confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+    "back": MessageLookupByLibrary.simpleMessage("رجوع"),
     "camera": MessageLookupByLibrary.simpleMessage("الكاميرا"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "confirmValidation": MessageLookupByLibrary.simpleMessage(
@@ -107,6 +108,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_internet_connection": MessageLookupByLibrary.simpleMessage(
       "لا يوجد اتصال بالانترنت",
     ),
+    "open_in_browser": MessageLookupByLibrary.simpleMessage(
+      "فتح باستخدام المتصفح",
+    ),
+    "page_not_found": MessageLookupByLibrary.simpleMessage("الصفحة غير موجودة"),
     "passValidation": MessageLookupByLibrary.simpleMessage(
       "من فضلك ادخل على الاقل 6 حروف او ارقام",
     ),

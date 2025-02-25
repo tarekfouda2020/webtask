@@ -8,7 +8,6 @@ import 'package:base_structure/core/bloc/device_cubit/device_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/helpers/di.dart';
-import 'core/routes/router_imports.dart';
 import 'my_app.dart';
 
 void main()async{
@@ -16,7 +15,6 @@ void main()async{
   await Firebase.initializeApp();
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   getIt.registerSingleton(SharedPreferences.getInstance());
-  getIt.registerSingleton(AppRouter());
   await configureDependencies();
   getIt<GlobalNotification>().setupNotification();
   runApp(

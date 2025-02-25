@@ -12,8 +12,9 @@
 import 'package:base_structure/core/helpers/file_service.dart' as _i1061;
 import 'package:base_structure/core/helpers/firebase_analytics_helper.dart'
     as _i928;
-import 'package:base_structure/core/helpers/global_context.dart' as _i294;
 import 'package:base_structure/core/helpers/global_notification.dart' as _i268;
+import 'package:base_structure/core/helpers/injection_module.inject.dart'
+    as _i533;
 import 'package:base_structure/core/helpers/loading_helper.dart' as _i633;
 import 'package:base_structure/core/helpers/location_service.dart' as _i857;
 import 'package:base_structure/core/helpers/psermission_services.dart' as _i239;
@@ -48,7 +49,9 @@ import 'package:base_structure/features/base/data/repositories/impl_base_reposit
 import 'package:base_structure/features/base/domain/repositories/base_repository.dart'
     as _i331;
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:go_router/go_router.dart' as _i583;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:logger/logger.dart' as _i974;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -61,6 +64,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final injectionModule = _$InjectionModule();
     gh.factory<_i857.LocationService>(() => _i857.LocationService());
     gh.factory<_i33.ShareServices>(() => _i33.ShareServices());
     gh.factory<_i1061.AppFileService>(() => _i1061.AppFileService());
@@ -81,9 +85,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i275.Put>(() => _i275.Put());
     gh.lazySingleton<_i496.GenericHttpImpl<dynamic>>(
         () => _i496.GenericHttpImpl<dynamic>());
-    gh.lazySingleton<_i294.GlobalContext>(() => _i294.GlobalContext());
     gh.lazySingleton<_i268.GlobalNotification>(
         () => _i268.GlobalNotification());
+    gh.lazySingleton<_i974.Logger>(() => injectionModule.logger);
+    gh.lazySingleton<_i583.GoRouter>(() => injectionModule.appRouter);
     gh.lazySingleton<_i616.Utilities>(() => _i616.Utilities());
     gh.lazySingleton<_i928.FirebaseAnalyticsHelper>(
         () => _i928.FirebaseAnalyticsHelper());
@@ -93,3 +98,5 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$InjectionModule extends _i533.InjectionModule {}

@@ -49,5 +49,8 @@
   "size_more_than_mg_error": "Files size must be less than {MB} MB, {files}",
   "no_internet_connection": "No internet connection",
   "internet_connected": "Internet connected",
-  "noResults": "No Results"
+  "noResults": "No Results",
+  "open_in_browser": "open in browser",
+  "page_not_found": "Page not found",
+  "back": "Back"
 }

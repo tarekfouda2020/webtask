@@ -1,14 +1,16 @@
 part of 'splash_imports.dart';
 
-@RoutePage()
-class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  static var name = 'splash';
+  static var path = '/splash';
+  const SplashScreen({super.key});
 
   @override
-  _SplashState createState() => _SplashState();
+  State<StatefulWidget> createState() => _SplashState();
+
 }
 
-class _SplashState extends State<Splash> {
+class _SplashState extends State<SplashScreen> {
   final SplashController controller = SplashController();
 
   @override

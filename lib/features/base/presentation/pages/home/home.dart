@@ -1,14 +1,17 @@
 part of 'home_imports.dart';
 
-@RoutePage()
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeScreen extends StatefulWidget {
+  static final String name = 'home';
+  final String userId;
+  const HomeScreen({super.key, required this.userId});
+
+  static String path({required String userId}) => '/home/$userId';
 
   @override
   State<StatefulWidget> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<HomeScreen> {
   final HomeController controller = HomeController();
 
   @override

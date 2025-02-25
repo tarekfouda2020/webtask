@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:base_structure/core/routes/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:base_structure/core/theme/colors/colors_extension.dart';
 import 'package:base_structure/core/theme/text/app_text_style.dart';
@@ -19,7 +19,7 @@ class AuthAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       leading: Offstage(
         offstage: !showBack,
         child: InkWell(
-          onTap:onBack?? ()=>AutoRouter.of(context).canPop(),
+          onTap:onBack?? ()=>AppNavigator.instance.popToLast(context),
           child: Icon(Icons.arrow_back, size: 30, color: context.colors.black,),
         ),
       ),

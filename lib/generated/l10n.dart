@@ -469,6 +469,31 @@ class S {
   String get noResults {
     return Intl.message('No Results', name: 'noResults', desc: '', args: []);
   }
+
+  /// `open in browser`
+  String get open_in_browser {
+    return Intl.message(
+      'open in browser',
+      name: 'open_in_browser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Page not found`
+  String get page_not_found {
+    return Intl.message(
+      'Page not found',
+      name: 'page_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message('Back', name: 'back', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

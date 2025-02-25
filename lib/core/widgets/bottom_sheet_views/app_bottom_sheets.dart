@@ -1,8 +1,8 @@
+import 'package:base_structure/core/routes/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:base_structure/core/bloc/value_state_manager/value_state_manager_import.dart';
 import 'package:base_structure/core/constants/dimens.dart';
 import 'package:base_structure/core/localization/translate.dart';
-import 'package:base_structure/core/routes/router_imports.dart';
 import 'package:base_structure/core/theme/colors/colors_extension.dart';
 import 'package:base_structure/core/widgets/base_form_option/options_requester/option_controller.dart';
 import 'package:base_structure/core/widgets/base_form_option/sheet/option_sheet_content.dart';
@@ -113,6 +113,6 @@ class SheetActionButton {
 
   factory SheetActionButton.cancel() {
     return SheetActionButton(
-        title: Translate.s.cancel, onPressed: () => ()=> GetIt.instance<AppRouter>().canPop());
+        title: Translate.s.cancel, onPressed: () => ()=> AppNavigator.instance.popToLast(AppNavigator.context!));
   }
 }

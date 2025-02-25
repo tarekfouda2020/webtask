@@ -1,14 +1,17 @@
 part of 'terms_imports.dart';
 
-@RoutePage()
-class Terms extends StatefulWidget {
-  const Terms({Key? key}) : super(key: key);
+class TermsScreen extends StatefulWidget {
+  static final String name = 'terms';
+  static final String path = '/terms';
+  const TermsScreen({super.key});
 
   @override
-  _TermsState createState() => _TermsState();
+  State<StatefulWidget> createState() => _TermsState();
+
+
 }
 
-class _TermsState extends State<Terms> {
+class _TermsState extends State<TermsScreen> {
   final TermsData termsData = TermsData();
 
   @override

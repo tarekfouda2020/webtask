@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_new_item": MessageLookupByLibrary.simpleMessage("Add new item"),
     "app_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "app_confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "back": MessageLookupByLibrary.simpleMessage("Back"),
     "camera": MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "confirmValidation": MessageLookupByLibrary.simpleMessage(
@@ -111,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_internet_connection": MessageLookupByLibrary.simpleMessage(
       "No internet connection",
     ),
+    "open_in_browser": MessageLookupByLibrary.simpleMessage("open in browser"),
+    "page_not_found": MessageLookupByLibrary.simpleMessage("Page not found"),
     "passValidation": MessageLookupByLibrary.simpleMessage(
       "Should have Upper and Lower case, numbers and special characters",
     ),

@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:base_structure/core/constants/gaps.dart';
 import 'package:base_structure/core/theme/colors/colors_extension.dart';

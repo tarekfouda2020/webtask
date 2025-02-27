@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'package:base_structure/core/helpers/di.dart';
+import 'package:base_structure/core/helpers/local_storage/i_storage_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:base_structure/core/helpers/storage_helper.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
@@ -39,7 +40,7 @@ class GlobalNotification {
         _showLocalNotification(message);
         _onMessageStreamController.add(message.data);
         if (int.parse(message.data["type"]??"0") == -1) {
-          StorageHelper.instance.clearSavedData();
+          getIt.get<IStorageHelper>().clear();
           // AutoRouter.of(context).push(const LoginRoute());
         }
       });

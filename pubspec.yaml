@@ -88,6 +88,8 @@ dependencies:
   logger: ^2.5.0
   get_storage: ^2.1.1
   cache_manager: ^1.0.0+4
+  carousel_slider: ^5.0.0
+  animated_bottom_navigation_bar: ^1.4.0
 
 
 

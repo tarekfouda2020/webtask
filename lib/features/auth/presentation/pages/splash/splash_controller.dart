@@ -5,7 +5,7 @@ class SplashController {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     var userStr = preferences.getString("user");
     await Future.delayed(const Duration(seconds: 4));
-    AppNavigator.instance.push(context, path: LoginScreen.path);
+    AppNavigator.instance.push(context, path: HomeScreen.path(userId:"1"));
   }
 
 }

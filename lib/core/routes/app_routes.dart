@@ -15,11 +15,11 @@ final appRoutes = [
     builder: (context, state) => SplashScreen(),
   ),
 
-  GoRoute(
-    name: LoginScreen.name,
-    path: LoginScreen.path,
-    builder: (context, state) => LoginScreen(),
-  ),
+  // GoRoute(
+  //   name: LoginScreen.name,
+  //   path: LoginScreen.path,
+  //   builder: (context, state) => LoginScreen(),
+  // ),
 
   GoRoute(
     name: ForgetPasswordScreen.name,

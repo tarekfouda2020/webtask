@@ -1,6 +1,7 @@
 
 import 'package:base_structure/core/routes/app_navigator.dart';
 import 'package:base_structure/features/auth/presentation/pages/login/login_imports.dart';
+import 'package:base_structure/features/base/presentation/pages/home/home_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:base_structure/core/theme/colors/colors_extension.dart';
 import 'package:base_structure/core/theme/text/app_text_style.dart';

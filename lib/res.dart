@@ -17,4 +17,5 @@ class Res {
   static const String errorSnackBar = "assets/images/error_snack_bar.svg";
   static const String warningSnackBar = "assets/images/warning_snack_bar.svg";
   static const String successSnackBar = "assets/images/success_snack_bar.svg";
+  static const String backArrow = "assets/images/navigation-back-arrow-svgrepo-com.svg";
 }

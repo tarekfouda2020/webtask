@@ -1,41 +1,41 @@
-part of 'login_imports.dart';
-
-class LoginScreen extends StatefulWidget {
-  static var name = 'login';
-  static var path = '/login';
-  const LoginScreen({super.key});
-
-  @override
-  State<StatefulWidget> createState() => _LoginState();
-
-}
-
-class _LoginState extends State<LoginScreen> {
-  final LoginController controller = LoginController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.colors.background,
-      appBar: const AuthAppBarWidget(showBack: false),
-      body: GestureDetector(
-        onTap: FocusScope.of(context).unfocus,
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          children: [
-            Text(
-              "Welcome back",
-              style: AppTextStyle.s20_w500(color: context.colors.black),
-            ),
-            Gaps.vGap20,
-            BuildLoginForm(controller: controller),
-            BuildLoginButton(controller: controller),
-            const BuildForgetPasswordView(),
-            const Divider(height: 30),
-            BuildLoginSocialMedia(controller: controller),
-          ],
-        ),
-      ),
-    );
-  }
-}
+// part of 'login_imports.dart';
+//
+// class LoginScreen extends StatefulWidget {
+//   static var name = 'login';
+//   static var path = '/login';
+//   const LoginScreen({super.key});
+//
+//   @override
+//   State<StatefulWidget> createState() => _LoginState();
+//
+// }
+//
+// class _LoginState extends State<LoginScreen> {
+//   final LoginController controller = LoginController();
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: context.colors.background,
+//       appBar: const AuthAppBarWidget(showBack: false),
+//       body: GestureDetector(
+//         onTap: FocusScope.of(context).unfocus,
+//         child: ListView(
+//           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+//           children: [
+//             Text(
+//               "Welcome back",
+//               style: AppTextStyle.s20_w500(color: context.colors.black),
+//             ),
+//             Gaps.vGap20,
+//             BuildLoginForm(controller: controller),
+//             BuildLoginButton(controller: controller),
+//             const BuildForgetPasswordView(),
+//             const Divider(height: 30),
+//             BuildLoginSocialMedia(controller: controller),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

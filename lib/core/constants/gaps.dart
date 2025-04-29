@@ -41,6 +41,12 @@ class Gaps {
 
   static const Widget line = Divider();
 
+  static const Widget hLine = Divider(
+    color:Colors.grey,
+    thickness:0.2,
+    height:0.5,
+  );
+
   static const Widget vLine = SizedBox(
     width: 0.6,
     height: 24.0,

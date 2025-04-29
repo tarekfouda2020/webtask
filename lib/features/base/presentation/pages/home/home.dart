@@ -3,6 +3,7 @@ part of 'home_imports.dart';
 class HomeScreen extends StatefulWidget {
   static final String name = 'home';
   final String userId;
+
   const HomeScreen({super.key, required this.userId});
 
   static String path({required String userId}) => '/home/$userId';
@@ -22,59 +23,21 @@ class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const DefaultAppBar(title: "Home"),
-      body: ListView(
-        padding: EdgeInsets.all(20),
-        children: [
-          GenericTextField(
-            controller: controller.minutesController,
-            fieldTypes: FieldTypes.normal,
-            type: TextInputType.number,
-            action: TextInputAction.next,
-            validate: (value) {},
-            label: "Minutes",
+      backgroundColor: context.colors.white,
+      body: CustomScrollView(
+        slivers: [
+          FlexibleHomeAppBarWidget(
+            title: FlexibleHomeAppBarTitleWidget(),
+            leading: LeadingFlexibleHomeAppBarWidget(),
+            background: SliverAppBarBackGroundHomeWidgets(
+              controller: controller,
+            ),
+            expandedHeight: 300,
           ),
-          GenericTextField(
-            controller: controller.secondsController,
-            fieldTypes: FieldTypes.normal,
-            type: TextInputType.number,
-            action: TextInputAction.next,
-            validate: (value) {},
-            margin: const EdgeInsets.only(top: 15),
-            label: "Seconds",
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          TextButton(
-            onPressed: ()=> controller.runTimer(),
-            child: const Text(
-              "Start",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            )
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          ObsValueConsumer(
-            observable: controller.secondObs,
-            builder: (context, seconds) {
-              return Text(
-                "${(seconds / 60).floor()} : ${seconds % 60}",
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              );
-            },
-          ),
+          SliverToBoxAdapter(child: HomeScreenDataHomeWidget()),
         ],
       ),
+      bottomNavigationBar: BottomNavHomePageWidget(controller: controller),
     );
   }
 }

@@ -39,7 +39,7 @@ class AppDarkColors extends AppColors {
   Color get disableGray=> const Color(0xFF262626);
 
   @override
-  Color get bluishGreen=> const Color(0xff18AA9D);
+  Color get bluishGreen=> const Color(0xFF1C1C1C);
 
   @override
   Color get green=>  Colors.green;

@@ -19,7 +19,7 @@ class TaskCard extends StatelessWidget {
       width: 250,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: context.colors.disableGray,
+        color: context.colors.bluishGreen,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class TaskCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      context.colors.blackOpacity,
+                      context.colors.bluishGreen,
                       Colors.transparent,
                     ],
                     begin: Alignment.bottomCenter,

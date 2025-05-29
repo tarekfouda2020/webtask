@@ -2,11 +2,9 @@ part of 'home_imports.dart';
 
 class HomeScreen extends StatefulWidget {
   static final String name = 'home';
-  final String userId;
+  static final String path = '/home';
 
-  const HomeScreen({super.key, required this.userId});
-
-  static String path({required String userId}) => '/home/$userId';
+  const HomeScreen({super.key});
 
   @override
   State<StatefulWidget> createState() => _HomeState();
@@ -17,27 +15,45 @@ class _HomeState extends State<HomeScreen> {
 
   @override
   void initState() {
+    controller.fetchItems();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colors.white,
-      body: CustomScrollView(
-        slivers: [
-          FlexibleHomeAppBarWidget(
-            title: FlexibleHomeAppBarTitleWidget(),
-            leading: LeadingFlexibleHomeAppBarWidget(),
-            background: SliverAppBarBackGroundHomeWidgets(
-              controller: controller,
-            ),
-            expandedHeight: 300,
-          ),
-          SliverToBoxAdapter(child: HomeScreenDataHomeWidget()),
-        ],
+      backgroundColor: context.colors.background,
+      appBar: NavBarWidget(
+        controller: controller,
       ),
-      bottomNavigationBar: BottomNavHomePageWidget(controller: controller),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: DeviceTypeService.instance.isTablet? 70 : 20,vertical: 10),
+        child: Column(
+          children: [
+            HeaderWidget(),
+            Gaps.vGap10,
+            BaseBlocBuilder(
+              bloc: controller.itemsBloc,
+              onSuccessWidget: (items) {
+                return Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: (MediaQuery.of(context).size.width / 350).ceil(),
+                      mainAxisExtent: 300,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                    ),
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return TaskCard(model: items[index],);
+                    },
+                  ),
+                );
+              }
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

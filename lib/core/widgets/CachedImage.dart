@@ -54,7 +54,7 @@ class CachedImage extends StatelessWidget{
           ),
           borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
           shape: boxShape??BoxShape.rectangle,
-          border: Border.all(color: borderColor??Colors.transparent,width: borderWidth??1),
+          border: borderColor == null? null : Border.all(color: borderColor??Colors.transparent,width: borderWidth??1),
         ),
         alignment: alignment??Alignment.center,
         child: child,
@@ -64,7 +64,7 @@ class CachedImage extends StatelessWidget{
         alignment: Alignment.center,
         decoration: BoxDecoration(
             borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
-            border: Border.all(color: borderColor??Colors.transparent,width: 1),
+            border: borderColor == null? null :  Border.all(color: borderColor??Colors.transparent,width: 1),
             shape: boxShape??BoxShape.rectangle,
             color: bgColor?? context.colors.primary.withOpacity(.5),
         ),
@@ -77,9 +77,9 @@ class CachedImage extends StatelessWidget{
         width: width,height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: bgColor?? context.colors.primary.withOpacity(.5),
+            color: bgColor?? context.colors.primary.withValues(alpha: .5),
             borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
-            border: Border.all(color: borderColor??Colors.transparent,width: 1),
+            border: borderColor == null? null :  Border.all(color: borderColor??Colors.transparent,width: 1),
             shape: boxShape??BoxShape.rectangle,
         ),
         child: Stack(

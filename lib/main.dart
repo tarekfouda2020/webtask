@@ -1,8 +1,4 @@
-import 'package:base_structure/core/helpers/global_notification.dart';
-import 'package:base_structure/core/helpers/local_storage/i_storage_helper.dart';
 import 'package:base_structure/core/helpers/local_storage/storage_helper.inject.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -14,12 +10,9 @@ import 'my_app.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   getIt.registerSingleton(SharedPreferences.getInstance());
   await StorageHelper.init();
   await configureDependencies();
-  getIt<GlobalNotification>().setupNotification();
   runApp(
     BlocProvider(
       create: (BuildContext context) => DeviceCubit(),

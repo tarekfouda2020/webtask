@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchFormField extends StatefulWidget {
@@ -27,13 +26,10 @@ class _SearchFormFieldState extends State<SearchFormField> {
   final double _collapsedSearchFieldWidth = 124.w;
   late double _expandSearchFieldWidth;
   bool _isSearchFieldExpand = false;
-  final _keyboardVisibilityController = KeyboardVisibilityController();
 
   @override
   void initState() {
     super.initState();
-    _handleDismissKeyboard();
-
     _focusNode.addListener(() {
       if (mounted) {
         setState(() {
@@ -46,18 +42,7 @@ class _SearchFormFieldState extends State<SearchFormField> {
     });
   }
 
-  void _handleDismissKeyboard() {
-    _keyboardVisibilityController.onChange.listen((visible) {
-      if (mounted) {
-        if (!visible) {
-          if (widget.onFocus!=null) {
-            widget.onFocus!(false);
-          }
-          FocusScope.of(context).requestFocus(FocusNode());
-        }
-      }
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {

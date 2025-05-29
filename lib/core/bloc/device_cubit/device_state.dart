@@ -16,7 +16,7 @@ class DeviceInitial extends DeviceState {
       isSmallPhone: false,
       isNetworkConnected: true,
       locale: const Locale('en', 'US'),
-      themeMode: AdaptiveThemeMode.light,
+      themeMode: AdaptiveThemeMode.dark,
   ));
 }
 

@@ -10,13 +10,13 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:base_structure/core/helpers/file_service.dart' as _i1061;
-import 'package:base_structure/core/helpers/firebase_analytics_helper.dart'
-    as _i928;
-import 'package:base_structure/core/helpers/global_notification.dart' as _i268;
 import 'package:base_structure/core/helpers/injection_module.inject.dart'
     as _i533;
 import 'package:base_structure/core/helpers/loading_helper.dart' as _i633;
-import 'package:base_structure/core/helpers/location_service.dart' as _i857;
+import 'package:base_structure/core/helpers/local_storage/i_storage_helper.dart'
+    as _i98;
+import 'package:base_structure/core/helpers/local_storage/storage_helper.inject.dart'
+    as _i1041;
 import 'package:base_structure/core/helpers/psermission_services.dart' as _i239;
 import 'package:base_structure/core/helpers/share_services.dart' as _i33;
 import 'package:base_structure/core/helpers/utilities.dart' as _i616;
@@ -65,7 +65,6 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final injectionModule = _$InjectionModule();
-    gh.factory<_i857.LocationService>(() => _i857.LocationService());
     gh.factory<_i33.ShareServices>(() => _i33.ShareServices());
     gh.factory<_i1061.AppFileService>(() => _i1061.AppFileService());
     gh.factory<_i239.PermissionServices>(() => _i239.PermissionServices());
@@ -85,15 +84,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i275.Put>(() => _i275.Put());
     gh.lazySingleton<_i496.GenericHttpImpl<dynamic>>(
         () => _i496.GenericHttpImpl<dynamic>());
-    gh.lazySingleton<_i268.GlobalNotification>(
-        () => _i268.GlobalNotification());
     gh.lazySingleton<_i974.Logger>(() => injectionModule.logger);
     gh.lazySingleton<_i583.GoRouter>(() => injectionModule.appRouter);
     gh.lazySingleton<_i616.Utilities>(() => _i616.Utilities());
-    gh.lazySingleton<_i928.FirebaseAnalyticsHelper>(
-        () => _i928.FirebaseAnalyticsHelper());
     gh.factory<_i86.HomeRemoteDataSource>(
         () => _i331.ImplHomeRemoteDataSource());
+    gh.factory<_i98.IStorageHelper>(() => _i1041.StorageHelper());
     gh.factory<_i331.BaseRepository>(() => _i990.ImplBaseRepository());
     return this;
   }

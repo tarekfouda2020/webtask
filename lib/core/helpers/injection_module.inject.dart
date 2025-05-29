@@ -39,5 +39,5 @@ abstract class InjectionModule {
           },
         ));
       },
-      initialLocation: '/splash');
+      initialLocation: '/home');
 }
